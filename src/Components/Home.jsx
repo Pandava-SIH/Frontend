@@ -32,12 +32,13 @@ export default () => {
                 </div>
               </div>
             </a>
-            <div className="box" id="generator">
+            <a href="/generation"><div className="box" id="generator">
               <div className="title">Generation</div>
               <div className="desc">
                 Want to generate a document? Explore here
               </div>
             </div>
+            </a>
           </div>
         </div>
       </section>

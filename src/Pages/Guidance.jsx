@@ -1,6 +1,8 @@
 import { useRef, useState } from "react";
 import axios from "axios";
 import Tesseract from "tesseract.js";
+import ReactMarkdown from "react-markdown"
+
 
 export default () => {
   const [imgs, setImgs] = useState([]);
