@@ -93,6 +93,7 @@ export default () => {
             onChange={(e) => {
               setImgs([...e.target.files]);
             }}
+            accept="image/png, image/jpeg"
           />
         </div>
         <div className="area">
@@ -101,7 +102,9 @@ export default () => {
         <div className="area">
           <div className="chatbox">
             {msgs.map((text) => (
-              <div className={text[1] ? "bubble1" : "bubble2"}>{text[0]}</div>
+              <div className={text[1] ? "bubble1" : "bubble2"}>
+                <ReactMarkdown>{text[0]}</ReactMarkdown>
+              </div>
             ))}
             {spin ? <div className="load">Generating...</div> : ""}
           </div>

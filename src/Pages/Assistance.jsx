@@ -1,5 +1,6 @@
 import axios from "axios"
 import { useRef, useState } from "react"
+import ReactMarkdown from "react-markdown"
 
 export default ()=>{
     const [msgs, setMsgs] = useState([]);
@@ -33,7 +34,9 @@ export default ()=>{
             <a href="/" style={{margin: "auto"}}><h1>Assistance</h1></a>
             <div className="chatbox">
                 {
-                    msgs.map(text=><div className={text[1]? "bubble1": "bubble2"}>{text[0]}</div>)
+                    msgs.map(text=><div className={text[1]? "bubble1": "bubble2"}>
+                        <ReactMarkdown>{text[0]}</ReactMarkdown>
+                    </div>)
                 }
                 {spin? <div className="load">Loading...</div>: ""}
             </div>
