@@ -330,3 +330,53 @@ h1{
   margin: auto;
   border-radius: 10px;
 }
+
+.area{
+  background-color: #1e1123;
+  border: 1px solid plum;
+  border-radius: 15px;
+}
+
+.guidance{
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.area{
+  height: 85vh;
+  overflow: scroll;
+  display: flex;
+  flex-flow: column;
+}
+
+.container{
+  display: grid;
+  grid-template-columns: 200px 1fr 1fr;
+  gap: 10px;
+}
+
+#inp{
+  display: none;
+}
+
+.files{
+  height: 99%;
+  padding: 4px;
+}
+
+.upload{
+  border-radius: 0 0 15px 15px;
+  background-color: plum;
+  width: 200px;
+  border: 1px solid beige;
+  text-align: center;
+}
+
+.filename{
+  background-color: #000000d0;
+  color: beige;
+  border-radius: 10px;
+  padding: 5px;
+  margin: 5px;
+}
