@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
-import axios from "axios"
-
+import axios from "axios";
+import Tesseract from "tesseract.js";
 
 export default () => {
   const [imgs, setImgs] = useState([]);
@@ -46,8 +46,37 @@ export default () => {
                 className="filename"
                 key={j}
                 onClick={(e) => {
-                  setSrc(URL.createObjectURL(i));
-                }}
+                  let url = URL.createObjectURL(i);
+                  setSrc(url);
+                  setSpin(true);
+                  const documents = [];
+                    Tesseract.recognize(url, "eng", {
+                      logger: (m) => console.log(m),
+                    }).then(({ data: { text } }) => {
+                        documents.push(text);
+                        axios
+                          .post("http://127.0.0.1:8000/load_documents/", {
+                            headers: {
+                              "Content-Type": "application/json",
+                            },
+                            data: {
+                              documents,
+                            },
+                          })
+                          .then((res) => {
+                            setMsgs([...msgs, [res.data["summary"], 0]]);
+                            setSpin(false);
+                          })
+                          .catch((err) => {
+                            setSpin(false);
+                            console.log(err);
+                          });
+                    }).catch(err=>{
+                        console.log(err);
+                        setSpin(false)
+                    });
+                  }
+                }
               >
                 {i.name}
               </div>
@@ -60,7 +89,6 @@ export default () => {
             id="inp"
             type="file"
             name="inp"
-            multiple
             title="Upload"
             onChange={(e) => {
               setImgs([...e.target.files]);
@@ -75,7 +103,7 @@ export default () => {
             {msgs.map((text) => (
               <div className={text[1] ? "bubble1" : "bubble2"}>{text[0]}</div>
             ))}
-            {spin ? <div className="load">Loading...</div> : ""}
+            {spin ? <div className="load">Generating...</div> : ""}
           </div>
           <div id="userin">
             <input

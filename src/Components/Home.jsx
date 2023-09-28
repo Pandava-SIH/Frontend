@@ -25,7 +25,6 @@ export default () => {
               </div>
             </a>
             <a href="/guidance">
-              {" "}
               <div className="box" id="document-assist">
                 <div className="title">Guidance</div>
                 <div className="desc">
