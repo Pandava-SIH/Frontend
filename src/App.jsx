@@ -4,8 +4,11 @@ import {Route, Routes, BrowserRouter as Router} from "react-router-dom"
 import Assistance from './Pages/Assistance'
 import Guidance from './Pages/Guidance'
 import Generator from './Pages/Generator'
+import { useState } from 'react'
+import Playground from './Pages/Playground'
 
 function App() {
+  const [api, setApi] = useState("");
   return (
     <>
       <Router>
@@ -13,7 +16,8 @@ function App() {
           <Route path='/' Component={Home}/>
           <Route path='/assistance' Component={Assistance} />
           <Route path='/guidance' Component={Guidance}/>
-          <Route path='/generation' Component={Generator}/>
+          <Route path='/generation' element={<Generator callback={setApi}/>}/>
+          <Route path='/playground' element={<Playground format={api}/>}/>
         </Routes>
       </Router>
     </>

@@ -1,8 +1,9 @@
 import axios from "axios"
 import { useEffect, useRef, useState } from "react"
 import Fuse from "fuse.js"
+import { useNavigate } from "react-router-dom"
 
-export default ()=>{
+export default ({callback})=>{
     const ref = useRef(null)
     const [results, setResults] = useState([])
     let fuse;
@@ -11,7 +12,7 @@ export default ()=>{
             fuse = new Fuse(res.data["titles"])
         })
     })
-
+    const navigate = useNavigate();
     const search = (query)=>{
         let result = fuse.search(query);
         setResults(result);
@@ -31,7 +32,12 @@ export default ()=>{
 
             <div className="results">
                 {
-                    results.map((i,j)=>(<div className="result" key={j}>{i.item}</div>))
+                    results.map((i,j)=>(<div className="result" key={j} onClick={
+                       ()=>{
+                            callback(i.item)
+                            navigate("/playground")
+                        } 
+                    }>{i.item}</div>))
                 }
             </div>
         </div>

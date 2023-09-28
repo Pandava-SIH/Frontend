@@ -1,0 +1,24 @@
+.playground{
+    display: grid;
+    grid-template-columns: 60% 40% ;
+}
+
+.doc_view{
+    background-color: white;
+    height: 97vh;
+    margin: 10px;
+    color: black;
+    overflow: scroll;
+    text-align: justify;
+    padding: 5px 30px 10px 10px;
+}
+.chat{
+    height: 100vh;
+    padding: 20px 20px 0px 10px;
+}
+
+.chatbox{
+    border-radius: 15px;
+    background-color: #a5a5a5;
+    margin-bottom: 20px;
+}
