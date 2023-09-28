@@ -1,8 +1,7 @@
 import { useRef, useState } from "react";
 import axios from "axios";
 import Tesseract from "tesseract.js";
-import ReactMarkdown from "react-markdown"
-
+import ReactMarkdown from "react-markdown";
 
 export default () => {
   const [imgs, setImgs] = useState([]);
@@ -52,33 +51,34 @@ export default () => {
                   setSrc(url);
                   setSpin(true);
                   const documents = [];
-                    Tesseract.recognize(url, "eng", {
-                      logger: (m) => console.log(m),
-                    }).then(({ data: { text } }) => {
-                        documents.push(text);
-                        axios
-                          .post("http://127.0.0.1:8000/load_documents/", {
-                            headers: {
-                              "Content-Type": "application/json",
-                            },
-                            data: {
-                              documents,
-                            },
-                          })
-                          .then((res) => {
-                            setMsgs([...msgs, [res.data["summary"], 0]]);
-                            setSpin(false);
-                          })
-                          .catch((err) => {
-                            setSpin(false);
-                            console.log(err);
-                          });
-                    }).catch(err=>{
-                        console.log(err);
-                        setSpin(false)
+                  Tesseract.recognize(url, "eng", {
+                    logger: (m) => console.log(m),
+                  })
+                    .then(({ data: { text } }) => {
+                      documents.push(text);
+                      axios
+                        .post("http://127.0.0.1:8000/load_documents/", {
+                          headers: {
+                            "Content-Type": "application/json",
+                          },
+                          data: {
+                            documents,
+                          },
+                        })
+                        .then((res) => {
+                          setMsgs([...msgs, [res.data["summary"], 0]]);
+                          setSpin(false);
+                        })
+                        .catch((err) => {
+                          setSpin(false);
+                          console.log(err);
+                        });
+                    })
+                    .catch((err) => {
+                      console.log(err);
+                      setSpin(false);
                     });
-                  }
-                }
+                }}
               >
                 {i.name}
               </div>

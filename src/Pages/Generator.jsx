@@ -1,23 +1,22 @@
 import axios from "axios"
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
+import Fuse from "fuse.js"
 
 export default ()=>{
     const ref = useRef(null)
+    const [results, setResults] = useState([])
     let fuse;
-
-
     useEffect(()=>{
         axios.get("http://127.0.0.1:8000/fetch_title/").then(res=>{
-            console.log(res.data["titles"])
-            fuse = new Fuse(res.data["titles"]);
+            fuse = new Fuse(res.data["titles"])
         })
     })
 
     const search = (query)=>{
         let result = fuse.search(query);
-        console.log(result);
+        setResults(result);
     }
-
+    console.log(results);
     return(
         <div className="generator">
             <div id="userin" style={{width: 800, marginTop: 20}}>
@@ -31,7 +30,9 @@ export default ()=>{
             </div>
 
             <div className="results">
-
+                {
+                    results.map((i,j)=>(<div className="result" key={j}>{i.item}</div>))
+                }
             </div>
         </div>
     )

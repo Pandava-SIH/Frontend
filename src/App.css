@@ -384,3 +384,27 @@ h1{
 .generator{
   
 }
+
+.results{
+  display: flex;
+  gap: 10px;
+  margin: 50px 10% 0 10%;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+.result{
+  height: 60px;
+  /* width: 700px; */
+  background-color: rgb(255, 233, 252);
+  border: 1px solid plum;
+  border-radius: 20px;
+  color: #150020;
+  text-align: center;
+  padding: 10px;
+  padding-top: 15px;
+  font-size: 20px;
+  font-weight: bold;
+}
