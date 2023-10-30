@@ -6,11 +6,15 @@ import Guidance from './Pages/Guidance'
 import Generator from './Pages/Generator'
 import { useState } from 'react'
 import Playground from './Pages/Playground'
+import Header from "./Components/Header";
 
 function App() {
   const [api, setApi] = useState("");
   return (
     <>
+      <div className="head-container">
+        <Header />
+      </div>
       <Router>
         <Routes>
           <Route path='/' Component={Home}/>

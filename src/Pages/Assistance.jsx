@@ -31,7 +31,7 @@ export default ()=>{
 
     return(
         <div className="assistance">
-            <a href="/" style={{margin: "auto"}}><h1>Assistance</h1></a>
+            {/* <a href="/" style={{margin: "auto"}}><h1>Assistance</h1></a> */}
             <div className="chatbox">
                 {
                     msgs.map(text=><div className={text[1]? "bubble1": "bubble2"}>

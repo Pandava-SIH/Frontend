@@ -38,7 +38,7 @@ export default () => {
 
   return (
     <div className="guidance">
-      <h1 className="guidance">Guidance</h1>
+      {/* <h1 className="guidance">Guidance</h1> */}
       <div className="container">
         <div className="area">
           <div className="files">

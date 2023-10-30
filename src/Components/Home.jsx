@@ -1,25 +1,40 @@
 import About from "./About";
 import Faq from "./Faq";
-import Header from "./Header";
+import assisImg from "../assets/assist.png"
+import guideImg from "../assets/guide.jpg"
+import genImg from "../assets/gear.jpg"
 
 export default () => {
   return (
     <>
       <section className="home">
-        <Header />
+        <svg
+          className="position-absolute top-0"
+          width="262"
+          height="160"
+          viewBox="0 0 262 160"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          style={{ left: "6%" }}
+        >
+          <ellipse
+            cx="131"
+            cy="30.5"
+            rx="131"
+            ry="129.5"
+            fill="white"
+            fillOpacity=".03"
+          ></ellipse>
+        </svg>
+
         <div className="hero">
-          <div className="title">
-            <h1>Where legal meets simple</h1>
-            <h2>
-              {" "}
-              We are here to fill in for your lawyer. Tell us your legal problem
-              and fret no more.
-            </h2>
-          </div>
+          <h1 className="heading">Where legal meets simple</h1>
 
           <div className="options">
+
             <a href="/assistance" className="box" id="assistance">
               <div className="title">Assistance</div>
+                <img src={assisImg} alt="" />
               <div className="desc">
                 Don't know what document you need? Ask here
               </div>
@@ -27,17 +42,20 @@ export default () => {
             <a href="/guidance">
               <div className="box" id="document-assist">
                 <div className="title">Guidance</div>
+                <img src={guideImg} alt="" />
                 <div className="desc">
                   Have doubt about existing document? Upload here
                 </div>
               </div>
             </a>
-            <a href="/generation"><div className="box" id="generator">
-              <div className="title">Generation</div>
-              <div className="desc">
-                Want to generate a document? Explore here
+            <a href="/generation">
+              <div className="box" id="generator">
+                <div className="title">Generation</div>
+                <img src={genImg} alt="" srcset="" />
+                <div className="desc">
+                  Want to generate a document? Explore here
+                </div>
               </div>
-            </div>
             </a>
           </div>
         </div>
